@@ -28,13 +28,10 @@
         $hasil= mysqli_query($koneksi,$sql);
     }
     
-
-
     $sql= "SELECT*FROM barang";
 
     $hasil= mysqli_query($koneksi, $sql);
 
-    
 
     var_dump($hasil);
     
