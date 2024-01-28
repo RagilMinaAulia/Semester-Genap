@@ -1,4 +1,5 @@
 <div style="margin:auto; width:900px">
+<h1><a href="http://localhost/Semester-Genap/Youtube/restoran/kategori/insert.php">TAMBAH DATA</a></h1>
 <?php 
     require_once "../function.php";
 
