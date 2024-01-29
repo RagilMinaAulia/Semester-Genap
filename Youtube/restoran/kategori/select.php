@@ -3,6 +3,12 @@
 <?php 
     require_once "../function.php";
 
+    if (isset($_GET['hapus'])) {
+        $id= $_GET['hapus'];
+        require_once "delete.php";
+    }
+    echo '<br>';
+
     $sql= "SELECT idkategori FROM tbkategori";
     $result= mysqli_query($koneksi,$sql);
     $jumlahdata= mysqli_num_rows($result);
@@ -42,6 +48,7 @@
         <tr>
             <th>NO</th>
             <th>KATEGORI</th>
+            <th>Hapus</th>
         </tr>
     ';
     $no=$mulai;
@@ -50,6 +57,7 @@
             echo '<tr>';
             echo '<td>'.$no++.'</td>';
             echo '<td>'.$row['kategori'].'</td>';
+            echo '<td><a href= "?hapus='.$row['idkategori'].'">'.'Hapus'.'</a></td>';
             echo'</tr>';
         } 
     }
