@@ -18,7 +18,6 @@
     $result= mysqli_query($koneksi,$sql);
     $jumlahdata= mysqli_num_rows($result);
 
-    
     $banyak= 3;
 
     $halaman= ceil($jumlahdata/$banyak);
