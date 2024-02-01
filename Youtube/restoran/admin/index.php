@@ -19,8 +19,7 @@
                 <h2>Restoran</h2>
             </div>
             <div class="col-md-9">
-                <div class="float-right mt-4">Logout</div>
-                
+                <div class="float-end mt-4">logout</div>
             </div>
         </div>
         <div class="row mt-5">
