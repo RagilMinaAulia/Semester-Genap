@@ -5,35 +5,38 @@
     $db= "dbtoko";
 
     $id= 0;
-    $namapelanggan= "";
-    $alamat= "";
-    $telepon= 0;
+    $namabarang= "";
+    $harga= 0;
+    $stock= 0;
     
     $koneksi= new mysqli($host, $user, $password, $db);
+    
     if (isset($_GET['ubah'])) {
         $id= $_GET['ubah'];
-        $sql= "SELECT*FROM pelanggan WHERE id=".$id;
+        $sql= "SELECT*FROM barang WHERE id=".$id;
         $hasil= mysqli_query($koneksi, $sql);
 
         if (mysqli_num_rows($hasil)>0) {
             $row= mysqli_fetch_array($hasil);
             $id= $row[0];
-            $namapelanggan= $row[1];
-            $alamat= $row[2];
-            $telepon= $row[3];
+            $namabarang= $row[1];
+            $harga= $row[2];
+            $stock= $row[3];
         }
     }
+
+    
 ?>
 
 <form action="" method="post">
-    Pelanggan:
-    <input type="text" name="namapelanggan" placeholder="nama pelanggan" value="<?php echo $namapelanggan?>">
+    barang:
+    <input type="text" name="namabarang" placeholder="nama barang" value="<?php echo $namabarang?>">
     <br>
-    Alamat:
-    <input type="text" name="alamat" placeholder="alamat" value="<?php echo $alamat?>">
+    harga:
+    <input type="number" name="harga" placeholder="harga barang" value="<?php echo $harga?>">
     <br>
-    Telepon:
-    <input type="number" name="telepon" placeholder="no telepon" value="<?php echo $telepon?>">
+    stock:
+    <input type="number" name="stock" placeholder="stock barang" value="<?php echo $stock?>">
     <br>
     <input type="submit" name="simpan" value="simpan">
     <input type="hidden" name="id" value="<?php echo $id?>">
@@ -41,43 +44,42 @@
 
 <?php
     if (isset($_POST["simpan"])) {
-        $pelanggan= $_POST["namapelanggan"];
-        $alamat= $_POST["alamat"];
-        $telepon= $_POST["telepon"];
-        
+        $barang= $_POST["namabarang"];
+        $harga= $_POST["harga"];
+        $stock= $_POST["stock"];
+
         if (isset($_POST['id'])) {
             $id= $_POST['id'];
             if ($id==0) {
-                $sql= "INSERT INTO pelanggan (namapelanggan,alamat,telepon) VALUES ('$pelanggan','$alamat',$telepon)";
+                $sql= "INSERT INTO barang (namabarang,harga,stock) VALUES ('$barang',$harga,$stock)";
                 $hasil= mysqli_query($koneksi,$sql);
-            }else {
-                $sql= "UPDATE pelanggan SET namapelanggan='$pelanggan', alamat='$alamat', telepon=$telepon WHERE id=".$id;
+            }
+            else {
+                $sql= "UPDATE barang SET namabarang='$barang', harga=$harga, stock=$stock WHERE id=".$id;
                 $hasil= mysqli_query($koneksi,$sql);
-                header("location:http://localhost/Semester-Genap/Sekolah%20smt-2/toko/pelanggan.php");
             }
         }
     }
 
     if (isset($_GET['hapus'])) {
         $id= $_GET['hapus'];
-        $sql= "DELETE FROM pelanggan WHERE id=".$id;
+        $sql= "DELETE FROM barang WHERE id=".$id;
         $hasil= mysqli_query($koneksi, $sql);
-
     }
-
-    $sql= "SELECT*FROM pelanggan";
+    
+    $sql= "SELECT*FROM barang";
     $hasil= mysqli_query($koneksi, $sql);
     echo "<table border=2px>
             <thead>
                 <tr>
                     <th>
-                        NAMA
+                        BARANG
                     </th>
                     <th>
-                        ALAMAT
+                        HARGA
                     </th>
                     <th>
-                        TELEPON
+                        STOCK
                     </th>
                     <th>
                         HAPUS
@@ -88,7 +90,8 @@
                 </tr>
             </thead>
             <tbody>";
-    while ($row= mysqli_fetch_array($hasil)) {
+    while ($row=mysqli_fetch_array($hasil)) {
+        
         echo "<tr>";
             echo "<td>". $row[1]. "</td>";
             echo "<td>". $row[2]. "</td>";
