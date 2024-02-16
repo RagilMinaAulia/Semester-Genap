@@ -19,12 +19,7 @@
         $row= $db->getALL("SELECT*FROM tbkategori ORDER BY kategori ASC");
     ?>
     <form action="" method="post">
-        <select name="opsi" id="" onchange="this.form.submit()">
-            <?php foreach ($row as $r): ?>
-            <option <?php if ($r['idkategori']==$opsi) echo "selected";?> value="<?php echo $r['idkategori']?>"><?php echo $r['kategori']?>
-            </option>
-            <?php endforeach ?>
-        </select>
+        
     </form>
 </div>
 
