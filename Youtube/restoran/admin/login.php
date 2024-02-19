@@ -19,14 +19,14 @@
                 <div class="from-group">
                     <form action="" method="post">
                         <div>
-                            <h3>Login Restoran</h3>
+                            <h3>LOGIN RESTORAN</h3>
                         </div>
                         <div class="from-group w-50">
-                            <label for="">Email:</label>
+                            <label for="">E-MAIL:</label>
                             <input type="email" name="email" required class="form-control">
                         </div>
                         <div class="from-group w-50">
-                            <label for="">Password:</label>
+                            <label for="">PASSWORD:</label>
                             <input type="password" name="password" required class="form-control">
                         </div>
                         <div>
@@ -48,12 +48,13 @@
         $count= $db->rowCOUNT($sql);
 
         if ($count==0) {
-            echo "<h3>Email/Password Salah</h3>";
+            echo "<center><h3>Email atau Password Salah</h3></center>";
         }else {
             $sql= "SELECT*FROM tbluser WHERE email='$email' AND password='$password'";
             $row= $db->getITEM($sql);
             $_SESSION['user']= $row['email'];
             $_SESSION['level']= $row['level'];
+            $_SESSION['iduser']= $row['iduser'];
             header("location:index.php");
         }
 
