@@ -15,11 +15,11 @@
         </div>
         <div class="from-group w-50">
             <label for="">Nama menu:</label>
-            <input type="text" name="menu" required placeholder="ketik" class="form-control">
+            <input type="text" name="menu" required placeholder="Ketik" class="form-control">
         </div>
         <div class="from-group w-50">
             <label for="">Harga:</label>
-            <input type="text" name="harga" required placeholder="ketik" class="form-control">
+            <input type="text" name="harga" required placeholder="Ketik" class="form-control">
         </div>
         <div class="from-group w-50">
             <label for="">Gambar:</label><br>
