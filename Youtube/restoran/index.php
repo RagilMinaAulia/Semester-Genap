@@ -29,7 +29,7 @@
                     if (isset($_SESSION['pelanggan'])) {
                         echo '
                             <div class="float-end mt-4"><a href="?log=logout">Logout</a></div>
-                            <div class="float-end mt-4 me-4">Pelanggan : '.$_SESSION['pelanggan'].'</div>
+                            <div class="float-end mt-4 me-4">Pelanggan : <a href="?f=home&m=beli">'.$_SESSION['pelanggan'].'</a></div>
                         ';
                     }else {
                         echo '
@@ -38,7 +38,7 @@
                         ';
                     }
                 ?>
-                
+                 
             </div>
         </div>
         <div class="row mt-5">
