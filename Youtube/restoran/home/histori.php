@@ -18,7 +18,7 @@
 ?>
 
 <h3>Histori Pembelian</h3>
-<table class="table table-bordered w-60">
+<table class="table table-bordered w-50">
     <thead>
         <tr>
             <th>No</th>
