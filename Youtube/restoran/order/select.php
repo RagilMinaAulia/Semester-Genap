@@ -10,14 +10,14 @@
         $mulai= 0;
     }
 
-    $sql= "SELECT*FROM vorder ORDER BY status DESC LIMIT $mulai,$banyak";
+    $sql= "SELECT*FROM vorder ORDER BY status, idorder ASC LIMIT $mulai,$banyak";
     $row= $db->getALL($sql);
     $no=1+$mulai;
     
 ?>
 
 <h3>Order Pembelian</h3>
-<table class="table table-bordered w-50">
+<table class="table table-bordered w-60">
     <thead>
         <tr>
             <th>No</th>
@@ -25,6 +25,8 @@
             <th>Tanggal</th>
             <th>Total</th>
             <th>Bayar</th>
+            <th>Kembali</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -32,7 +34,7 @@
             <?php foreach ($row as $r): ?>
                 <?php 
                     if ($r['status']==0) {
-                        $status= '<td><a href="?f=home&m=detail&id='.$r['idorder'].'">Bayar</a></td>';
+                        $status= '<td><a href="?f=order&m=bayar&id='.$r['idorder'].'">Bayar</a></td>';
                     }else {
                         $status= '<td>Sudah dibayar</td>';
                     }
@@ -42,6 +44,8 @@
                     <td><?php echo $r['pelanggan'] ?></td>
                     <td><?php echo $r['tglorder'] ?></td>
                     <td><?php echo $r['total'] ?></td>
+                    <td><?php echo $r['bayar'] ?></td>
+                    <td><?php echo $r['kembali'] ?></td>
                     <?php echo $status ?>
                 </tr>
             <?php endforeach?>
