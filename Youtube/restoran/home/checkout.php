@@ -3,7 +3,7 @@
         $total= $_GET['total'];
         $idorder= idorder();
         $idpelanggan= $_SESSION['idpelanggan'];
-        $tgl= date('2024-2-21');
+        $tgl= date('Y-m-d');
         $sql= "SELECT*FROM tblorder WHERE idorder=$idorder";
         $count= $db->rowCOUNT($sql);
         if ($count == 0) {
